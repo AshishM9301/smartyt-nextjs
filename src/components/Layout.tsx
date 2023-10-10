@@ -1,11 +1,17 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
+import { Provider } from "react-redux";
 
 import React from "react";
+import { store } from "@/redux/store";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <Provider store={store}>
+      <SessionProvider>{children}</SessionProvider>
+    </Provider>
+  );
 };
 
 export default Layout;
